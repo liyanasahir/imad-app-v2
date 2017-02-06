@@ -1,5 +1,5 @@
-var express = require('express');
-var morgan = require('morgan');
+var express = require('express');  //USED TO CREATE THE WEB server - listening on port, http connections
+var morgan = require('morgan');  //to help outpt logs of server - what requests are coming, how to respond
 var path = require('path');
 
 var app = express();
@@ -8,6 +8,18 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+app.get('/article-one', function (req, res){
+    res.send("Article one goes here.")
+})
+
+app.get('/article-two', function (req, res){
+    res.send("Article two goes here.")
+})
+
+app.get('/article-three', function (req, res){
+    res.send("Article three goes here.")
+})
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
